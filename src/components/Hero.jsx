@@ -13,7 +13,7 @@ export default function Hero() {
  {/* Enhanced subtitle with animated underline effect */}
      
        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-10 max-w-xl font-sans">
-  <span className="text-black font-medium">Empowering Brands with</span> 
+  
 
   <span className="text-purple-700 font-bold relative group ml-1">
     Innovative Tech Solutions

@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png';
+import { RocketIcon } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -9,28 +10,35 @@ export default function Hero() {
         <img src={logo} alt="NextUp Logo" className="h-200 object-contain" />
       </div>
       
-      
- {/* Enhanced subtitle with animated underline effect */}
-     
-       <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-10 max-w-xl font-sans">
-  
+      {/* Enhanced subtitle with animated underline effect */}
+      <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 max-w-xl font-sans">
+        <span className="text-purple-700 font-bold relative group ml-1">
+          Innovative Tech Solutions
+          <span className="absolute left-0 -bottom-1 h-0.5 bg-purple-700 w-0 group-hover:w-full transition-all duration-500"></span>
+        </span> 
 
-  <span className="text-purple-700 font-bold relative group ml-1">
-    Innovative Tech Solutions
-    <span className="absolute left-0 -bottom-1 h-0.5 bg-purple-700 w-0 group-hover:w-full transition-all duration-500"></span>
-  </span> 
+        <span className="text-black font-medium"> & </span> 
 
-  <span className="text-black font-medium"> & </span> 
+        <span className="text-purple-700 font-bold relative group ml-1">
+          Creative Content
+          <span className="absolute left-0 -bottom-1 h-0.5 bg-purple-700 w-0 group-hover:w-full transition-all duration-500"></span>
+        </span>
+      </p>
 
-  <span className="text-purple-700 font-bold relative group ml-1">
-    Creative Content
-    <span className="absolute left-0 -bottom-1 h-0.5 bg-purple-700 w-0 group-hover:w-full transition-all duration-500"></span>
+      {/* Get Started Button */}
+     <a 
+  href="#services" 
+  className="px-6 py-2 bg-purple-700 text-white font-semibold rounded-full hover:bg-purple-800 transition duration-300 mb-6 flex items-center gap-2 group shadow-md hover:shadow-xl transform hover:scale-105"
+>
+  <RocketIcon 
+    size={18} 
+    className="transition-transform duration-300 group-hover:rotate-45" 
+  />
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    Get Started
   </span>
-</p>
+</a>
 
-
-
-      
       {/* Explore Link */}
       <a 
         href="#about" 

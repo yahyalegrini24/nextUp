@@ -7,10 +7,12 @@ export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
-      
-      {/* Logo */}
-      <img src={logo} alt="NextUp Logo" className="h-20" />
+    <header className="flex justify-between items-center px-6 py-3 bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
+
+      {/* Logo with controlled size */}
+      <div className="h-14 flex items-center">
+        <img src={logo} alt="NextUp Logo" className="max-h-30 object-contain" />
+      </div>
 
       {/* Right Controls */}
       <div className="flex items-center space-x-4 relative">
@@ -30,20 +32,14 @@ export default function Header() {
               
               <button
                 className="block text-black hover:text-purple-700 text-lg font-medium transition w-full text-left"
-                onClick={() => {
-                  setLangOpen(false);
-                  // Switch to English logic here
-                }}
+                onClick={() => setLangOpen(false)}
               >
                 English
               </button>
 
               <button
                 className="block text-black hover:text-purple-700 text-lg font-medium transition w-full text-left"
-                onClick={() => {
-                  setLangOpen(false);
-                  // Switch to Arabic logic here
-                }}
+                onClick={() => setLangOpen(false)}
               >
                 العربية
               </button>

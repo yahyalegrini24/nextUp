@@ -1,0 +1,67 @@
+
+{
+  "about": "About",
+  "servicesMenu": "Services",
+  "whyNextUp": "Why NextUp?",
+  "contact": "Contact",
+   "logoAlt": "NextUp Logo",
+  "heroSubtitle": "Together, We Shape What's Next",
+  "getStarted": "Get Started",
+  "explore": "Explore NextUp",
+  "social": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
+  },
+  "typewriter": {
+    "phrase1": "Empowering Bold Ideas",
+    "phrase2": "Fueling Your Vision",
+    "phrase3": "Innovating Together"
+  },
+  "services": {
+    "title": "Our",
+    "highlight": "Services",
+    "subtitle": {
+      "part1": "Comprehensive",
+      "part2": "digital solutions",
+      "part3": "tailored for your business growth"
+    },
+    "development": {
+      "category": "Development",
+      "title": "Web & Mobile Apps",
+      "description": "Pixel-perfect applications with stunning UI/UX. We build responsive websites and cross-platform mobile apps.",
+      "subservices": {
+        "web": "Web Development",
+        "mobile": "Mobile Apps",
+        "design": "UI/UX Design"
+      }
+    },
+    "content": {
+      "category": "Content Creation",
+      "title": "Media Production",
+      "description": "Professional photography, videography and voiceovers that tell your brand's story effectively.",
+      "subservices": {
+        "media": "Photo/Videography",
+        "voice": "Voice Overs",
+        "editing": "Editing"
+      }
+    },
+    "design": {
+      "category": "Design",
+      "title": "Visual Identity",
+      "description": "Complete branding solutions including logos, style guides, and marketing materials.",
+      "subservices": {
+        "graphic": "Graphic Design",
+        "brand": "Brand Identity",
+        "print": "Print Materials"
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Previous service",
+    "next": "Next service",
+    "goTo": "Go to service "
+  }
+  
+}

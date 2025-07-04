@@ -92,7 +92,7 @@ export default function Header() {
                 className="block text-black hover:text-purple-700 text-lg font-medium transition"
                 onClick={() => setMenuOpen(false)}
               >
-                {t('about')}
+                {t('aboutMenu')}
               </a>
               <a
                 href="#services"
@@ -101,13 +101,7 @@ export default function Header() {
               >
                 {t('servicesMenu')}
               </a>
-              <a
-                href="#portfolio"
-                className="block text-black hover:text-purple-700 text-lg font-medium transition"
-                onClick={() => setMenuOpen(false)}
-              >
-                {t('whyNextUp')}
-              </a>
+              
               <a
                 href="#contact"
                 className="block text-black hover:text-purple-700 text-lg font-medium transition"

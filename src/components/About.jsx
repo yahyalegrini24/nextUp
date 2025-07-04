@@ -1,122 +1,160 @@
+/* eslint-disable no-unused-vars */
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const ProfessionalAgencyDNA = () => {
-  const [activePillar, setActivePillar] = useState(0);
+export default function About() {
+  const { t } = useTranslation();
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [features, setFeatures] = useState([]);
 
-  const pillars = [
-    {
-      title: "Strategic Discovery",
-      description: "We conduct comprehensive market analysis and user research to build solutions that address real business challenges.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-        </svg>
-      )
-    },
-    {
-      title: "Precision Development",
-      description: "Enterprise-grade engineering with rigorous quality assurance at every stage of the development lifecycle.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      )
-    },
-    {
-      title: "Seamless Delivery",
-      description: "Managed deployment with post-launch support to ensure sustained performance and ROI.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-      )
-    }
-  ];
+  useEffect(() => {
+    setFeatures([
+      {
+        title: t('about.features.innovation.title'),
+        description: t('about.features.innovation.description'),
+        icon: "💡"
+      },
+      {
+        title: t('about.features.community.title'),
+        description: t('about.features.community.description'),
+        icon: "🌐"
+      },
+      {
+        title: t('about.features.future.title'),
+        description: t('about.features.future.description'),
+        icon: "🚀"
+      }
+    ]);
+  }, [t]);
 
   return (
-    <section className="min-h-screen bg-white py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <motion.h2 
+    <section id="about" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900 overflow-hidden px-6 py-20">
+
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div 
+          className="absolute top-[-10%] left-[-10%] w-80 h-80 bg-purple-500 opacity-20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-purple-500 opacity-20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.2, 0.25, 0.2]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay"></div>
+      </div>
+
+      {/* Glass Container */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-10 md:p-16 max-w-6xl w-full grid md:grid-cols-2 gap-10 z-10"
+      >
+
+        {/* Left Side - Title & Visual */}
+        <div className="flex flex-col justify-center text-white gap-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
           >
-            Our <span className="text-purple-700">End-to-End Process</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              {t('about.title')}
+            </h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-4 mb-6"></div>
+          </motion.div>
+          
+          <motion.p 
+            className="text-lg md:text-xl font-medium max-w-md"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
           >
-            From concept to measurable results
+            {t('about.mission')}
           </motion.p>
         </div>
 
-        {/* Three Pillar Visualization */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 mb-28">
-          {/* Vertical Connection Line */}
-          <div className="hidden lg:block h-[400px] w-px bg-gradient-to-b from-purple-100 to-purple-300 relative">
-            {pillars.map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute left-1/2 w-16 h-16 rounded-full flex items-center justify-center -translate-x-1/2 cursor-pointer transition-all ${activePillar === i ? 'bg-purple-700 text-white shadow-lg' : 'bg-white text-purple-700 border border-purple-200'}`}
-                style={{ top: `${30 + i * 33}%` }}
-                onClick={() => setActivePillar(i)}
-                whileHover={{ scale: 1.05 }}
-              >
-                {pillars[i].icon}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Mobile Horizontal Connection Line */}
-          <div className="lg:hidden w-full h-px bg-gradient-to-r from-purple-100 to-purple-300 relative my-16">
-            {pillars.map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute top-1/2 w-16 h-16 rounded-full flex items-center justify-center -translate-y-1/2 cursor-pointer transition-all ${activePillar === i ? 'bg-purple-700 text-white shadow-lg' : 'bg-white text-purple-700 border border-purple-200'}`}
-                style={{ left: `${15 + i * 35}%` }}
-                onClick={() => setActivePillar(i)}
-                whileHover={{ scale: 1.05 }}
-              >
-                {pillars[i].icon}
-              </motion.div>
-            ))}
-          </div>
+        {/* Right Side - Interactive Features */}
+        <div className="flex flex-col justify-center gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 + (index * 0.15) }}
+              viewport={{ once: true }}
+              className={`backdrop-blur-md bg-white/5 border ${hoveredItem === index ? 'border-purple-400/50' : 'border-white/20'} p-6 rounded-2xl shadow-lg transition-all duration-300 cursor-pointer`}
+              onMouseEnter={() => setHoveredItem(index)}
+              onMouseLeave={() => setHoveredItem(null)}
+              whileHover={{ y: -5 }}
+            >
+              <div className="flex items-start gap-4">
+                <motion.span 
+                  className="text-2xl p-3 rounded-lg bg-gradient-to-br from-purple-400/20 to-pink-400/20"
+                  animate={{
+                    scale: hoveredItem === index ? [1, 1.1, 1] : 1
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {feature.icon}
+                </motion.span>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-purple-100/80">{feature.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Content Display */}
-        <motion.div 
-          key={activePillar}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="bg-gray-50 rounded-xl p-10 border border-gray-100">
-            <div className="flex items-start gap-8">
-              <div className={`p-4 rounded-lg bg-purple-100 text-purple-700`}>
-                {pillars[activePillar].icon}
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {pillars[activePillar].title}
-                </h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {pillars[activePillar].description}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      </motion.div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white/10"
+            style={{
+              width: Math.random() * 10 + 5 + 'px',
+              height: Math.random() * 10 + 5 + 'px',
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%'
+            }}
+            animate={{
+              y: [0, (Math.random() - 0.5) * 100],
+              x: [0, (Math.random() - 0.5) * 50],
+              opacity: [0.8, 0.4, 0.8]
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
     </section>
   );
-};
-
-export default ProfessionalAgencyDNA;
+}

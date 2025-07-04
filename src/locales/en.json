@@ -1,6 +1,6 @@
 
 {
-  "about": "About",
+  "aboutMenu": "About",
   "servicesMenu": "Services",
   "whyNextUp": "Why NextUp?",
   "contact": "Contact",
@@ -62,6 +62,26 @@
     "previous": "Previous service",
     "next": "Next service",
     "goTo": "Go to service "
+  },
+  
+  "about": {
+    "title": "Our Mission",
+    "mission": "At NextUp, we empower bold thinkers to bring their ideas to life and shape the future together.",
+    "cta": "Join Our Movement",
+    "features": {
+      "innovation": {
+        "title": "We turn bold ideas into reality",
+        "description": "Our proven process transforms concepts into market-ready solutions"
+      },
+      "community": {
+        "title": "Community-driven innovation",
+        "description": "We believe the best solutions come from collaborative thinking"
+      },
+      "future": {
+        "title": "Future-focused solutions",
+        "description": "We build with tomorrow's challenges in mind"
+      }
+    }
   }
   
 }

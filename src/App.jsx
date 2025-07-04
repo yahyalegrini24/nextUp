@@ -8,6 +8,7 @@ function App() {
     <div>
       <Header />
       <Hero />
+      <About/>
       <Services />
     </div>
   );

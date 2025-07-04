@@ -1,121 +1,165 @@
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { CodeIcon, SmartphoneIcon, CpuIcon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Code, 
+  Smartphone, 
+  Camera, 
+  Mic2, 
+  Palette,
+  Layers,
+  Figma,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 
 const services = [
   {
-    title: "Web Development",
-    description: "Sites that load at lightspeed with immersive interactions",
-    icon: <CodeIcon className="w-8 h-8" />,
-    glow: "purple"
+    category: "Development",
+    title: "Web & Mobile Apps",
+    description: "Pixel-perfect applications with stunning UI/UX. We build responsive websites and cross-platform mobile apps.",
+    icon: <Layers size={24} />,
+    subservices: [
+      { icon: <Code size={18} />, name: "Web Development" },
+      { icon: <Smartphone size={18} />, name: "Mobile Apps" },
+      { icon: <Figma size={18} />, name: "UI/UX Design" }
+    ],
+    color: "bg-purple-600"
   },
   {
-    title: "Mobile Apps",
-    description: "Pixel-perfect iOS & Android experiences users crave",
-    icon: <SmartphoneIcon className="w-8 h-8" />,
-    glow: "blue"
+    category: "Content Creation",
+    title: "Media Production",
+    description: "Professional photography, videography and voiceovers that tell your brand's story effectively.",
+    icon: <Camera size={24} />,
+    subservices: [
+      { icon: <Camera size={18} />, name: "Photo/Videography" },
+      { icon: <Mic2 size={18} />, name: "Voice Overs" },
+      { icon: <Palette size={18} />, name: "Editing" }
+    ],
+    color: "bg-blue-600"
   },
   {
-    title: "AI Solutions",
-    description: "Machine learning models that evolve with your business",
-    icon: <CpuIcon className="w-8 h-8" />,
-    glow: "pink"
+    category: "Design",
+    title: "Visual Identity",
+    description: "Complete branding solutions including logos, style guides, and marketing materials.",
+    icon: <Palette size={24} />,
+    subservices: [
+      { icon: <Palette size={18} />, name: "Graphic Design" },
+      { icon: <Figma size={18} />, name: "Brand Identity" },
+      { icon: <Layers size={18} />, name: "Print Materials" }
+    ],
+    color: "bg-pink-600"
   }
 ];
 
-const ServiceStack = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const x = useMotionValue(0);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % services.length);
-      animate(x, [0, 50, 0], { duration: 1.5 });
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, []);
+export default function ServiceCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextService = () => {
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+  };
+
+  const prevService = () => {
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+  };
 
   return (
-    <section id="services" className="relative py-28 bg-gradient-to-b from-white to-purple-50 overflow-hidden">
-      {/* Matching hero decorations */}
-      <div className="absolute top-[-10%] left-[-10%] w-80 h-80 bg-purple-500 opacity-25 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-purple-500 opacity-25 rounded-full blur-3xl animate-pulse" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <motion.h2 
-          className="text-4xl md:text-5xl font-bold text-purple-800 mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-        >
-          Our <span className="bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">Digital Arsenal</span>
-        </motion.h2>
-        
-        <motion.p 
-          className="text-xl text-purple-600 mb-16 max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Tools crafted to future-proof your business
-        </motion.p>
-
-        {/* Holographic card stack */}
-        <div className="relative h-96 md:h-[32rem] perspective-1000">
-          {services.map((service, index) => {
-            const isActive = index === activeIndex;
-            const zIndex = services.length - index;
-            const scale = 1 - (index * 0.1);
-            const yOffset = index * 30;
-            const opacity = isActive ? 1 : 0.7 - (index * 0.2);
-            
-            return (
-              <motion.div
-                key={index}
-                className={`absolute inset-0 mx-auto w-full max-w-md bg-white rounded-2xl shadow-lg border border-purple-100 p-8 cursor-pointer transition-all duration-500 ${isActive ? '' : 'pointer-events-none'}`}
-                style={{
-                  zIndex,
-                  scale,
-                  y: yOffset,
-                  opacity,
-                  x: isActive ? x : 0,
-                  filter: isActive ? 
-                    `drop-shadow(0 10px 30px rgba(168, 85, 247, 0.3))` : 
-                    `drop-shadow(0 5px 15px rgba(168, 85, 247, 0.1))`
-                }}
-                whileHover={isActive ? { y: -10 } : {}}
-                onClick={() => setActiveIndex(index)}
-              >
-                <div className={`absolute inset-0 rounded-2xl overflow-hidden`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br from-white to-${service.glow}-50 opacity-80`} />
-                  <div className={`absolute inset-0 bg-gradient-to-r from-${service.glow}-500/5 to-${service.glow}-400/5 border border-${service.glow}-100/30 rounded-2xl`} />
-                </div>
-                
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 mb-6 rounded-xl bg-${service.glow}-100 flex items-center justify-center`}>
-                    {service.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-purple-800 mb-3">{service.title}</h3>
-                  <p className="text-purple-600">{service.description}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+    <section className="py-12 md:py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Our <span className="text-purple-700">Services</span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive digital solutions for your business
+          </p>
         </div>
 
-        {/* Navigation dots */}
-        <div className="flex justify-center gap-2 mt-12">
-          {services.map((_, index) => (
-            <button 
+        {/* Desktop Grid (hidden on mobile) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
               key={index}
-              className={`w-3 h-3 rounded-full transition-all ${activeIndex === index ? 'bg-purple-600 w-6' : 'bg-purple-200'}`}
-              onClick={() => setActiveIndex(index)}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+            >
+              <div className="p-8 h-full">
+                <div className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <div className="space-y-3">
+                  {service.subservices.map((sub, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className={`w-10 h-10 ${service.color} bg-opacity-10 rounded-lg flex items-center justify-center`}>
+                        {sub.icon}
+                      </div>
+                      <span className="font-medium text-gray-700">{sub.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
+        </div>
+
+        {/* Mobile Carousel (visible on mobile) */}
+        <div className="md:hidden relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-xl shadow-lg p-6 mx-4"
+            >
+              <div className={`w-12 h-12 ${services[currentIndex].color} rounded-xl flex items-center justify-center text-white mb-4`}>
+                {services[currentIndex].icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{services[currentIndex].title}</h3>
+              <p className="text-gray-600 mb-4">{services[currentIndex].description}</p>
+              <div className="space-y-2">
+                {services[currentIndex].subservices.map((sub, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className={`w-8 h-8 ${services[currentIndex].color} bg-opacity-10 rounded-lg flex items-center justify-center`}>
+                      {sub.icon}
+                    </div>
+                    <span className="font-medium text-gray-700 text-sm">{sub.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prevService}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center z-10"
+          >
+            <ChevronLeft className="w-5 h-5 text-gray-700" />
+          </button>
+          <button 
+            onClick={nextService}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center z-10"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-700" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 gap-2">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all ${currentIndex === index ? `${services[currentIndex].color}` : 'bg-gray-300'}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default ServiceStack;
+}

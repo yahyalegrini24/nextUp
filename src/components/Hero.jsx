@@ -1,60 +1,80 @@
 import logo from '../assets/logo.png';
-import { RocketIcon } from 'lucide-react';
+import { RocketIcon, FacebookIcon, TwitterIcon, InstagramIcon, LinkedinIcon } from 'lucide-react';
+import { Typewriter } from 'react-simple-typewriter';
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex flex-col relative overflow-hidden bg-gradient-to-br from-white via-purple-50 to-purple-100">
+    <section id="hero" className="min-h-screen flex flex-col relative overflow-hidden bg-gradient-to-br from-white via-purple-50 to-purple-100 text-purple-700">
 
       {/* Decorative Blurred Circles */}
       <div className="absolute top-[-10%] left-[-10%] w-80 h-80 bg-purple-500 opacity-25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-purple-700 opacity-25 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-purple-500 opacity-25 rounded-full blur-3xl animate-pulse"></div>
 
-      {/* Main Content Area */}
-      <div className="flex flex-col md:flex-row items-center justify-between flex-grow px-6 md:px-20 py-24 gap-16 z-10">
+      {/* Centered Purple Rectangle */}
+      <div className="flex flex-col items-center justify-center flex-grow px-6 md:px-20 py-24 z-10">
 
-        {/* Logo Left with Hover Animation */}
-        <div className="w-full md:w-1/2 flex justify-center items-center animate-fade-up">
-          <img 
-            src={logo} 
-            alt="NextUp Logo" 
-            className="h-auto w-72 sm:w-96 md:w-[28rem] lg:w-[32rem] object-contain transition-transform duration-500 hover:scale-110 drop-shadow-[0_0_25px_rgba(168,85,247,0.5)]"
-          />
-        </div>
+        <div className="bg-purple-700 text-white rounded-3xl shadow-2xl max-w-4xl w-full p-10 md:p-16 flex flex-col items-center gap-8 animate-fade-up">
 
-        {/* Description with Soft Purple Container */}
-        <div className="max-w-xl w-full animate-fade-up bg-purple-700/90 text-white rounded-3xl p-10 md:p-16 shadow-2xl backdrop-blur-sm">
+          {/* Logo with White Container */}
+          <div className="bg-white p-6 rounded-3xl shadow-xl">
+            <img 
+              src={logo} 
+              alt="NextUp Logo" 
+              className="h-auto w-72 sm:w-96 md:w-[24rem] object-contain transition-transform duration-500 hover:scale-110 drop-shadow-[0_0_25px_rgba(168,85,247,0.5)]"
+            />
+          </div>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-            Who We Are
+          {/* Subtitles with Animations */}
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-center animate-fade-up">
+            <Typewriter
+              words={['Empowering Bold Ideas', 'Fueling Your Vision', 'Innovating Together']}
+              loop
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
           </h2>
+<h3 className="text-2xl md:text-3xl font-semibold text-center tracking-wide text-white animate-fade-up delay-500 drop-shadow-lg">
+  Together, We Shape What's Next
+</h3>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4">
-            At <span className="font-semibold text-white">NextUp</span>, we build innovative solutions empowering businesses and individuals to thrive in the digital era.
-          </p>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-8">
-            We push boundaries, embrace bold ideas, and craft experiences that make an impact.
-          </p>
+          {/* Social Media Icons */}
+          <div className="flex gap-6 mt-2">
+            <a href="#" className="hover:scale-110 transition-transform">
+              <FacebookIcon size={28} />
+            </a>
+            <a href="#" className="hover:scale-110 transition-transform">
+              <TwitterIcon size={28} />
+            </a>
+            <a href="#" className="hover:scale-110 transition-transform">
+              <InstagramIcon size={28} />
+            </a>
+            <a href="#" className="hover:scale-110 transition-transform">
+              <LinkedinIcon size={28} />
+            </a>
+          </div>
 
+          {/* Get Started Button */}
           <a 
             href="#services" 
-            className="px-8 py-4 bg-gradient-to-r from-white/80 to-white text-purple-700 font-semibold rounded-full hover:from-white hover:to-gray-100 transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-2xl active:scale-95"
+            className="mt-4 px-8 py-4 bg-gradient-to-r from-white to-gray-100 text-purple-700 font-semibold rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-2xl active:scale-95"
           >
             <RocketIcon size={20} className="group-hover:rotate-45 transition-transform duration-300" />
             <span className="text-base">Get Started</span>
           </a>
 
         </div>
-
       </div>
 
-      {/* Bottom Explore Button with Margin */}
-      <div className="z-10 mt-[-2rem] mb-8 px-6 md:px-20 w-full flex justify-center">
+      {/* Bottom Explore Button */}
+      <div className="z-10 mb-8 px-6 md:px-20 w-full flex justify-center">
         <a 
           href="#about" 
           className="text-purple-700 font-semibold text-lg md:text-xl flex items-center gap-2 animate-bounce cursor-pointer"
         >
-          {/* Downward Arrow Icon */}
           <svg 
             className="w-5 h-5" 
             fill="none" 
@@ -63,7 +83,6 @@ export default function Hero() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
-
           Explore NextUp
         </a>
       </div>

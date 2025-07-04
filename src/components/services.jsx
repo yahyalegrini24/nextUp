@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -73,7 +74,7 @@ export default function ServiceCarousel() {
   };
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-gray-50 to-white font-sans">
+    <section id="services" className="py-12 md:py-20 bg-gradient-to-b from-gray-50 to-white font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Enhanced Header */}
         <div className="text-center mb-12 md:mb-16">

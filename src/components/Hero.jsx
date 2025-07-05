@@ -73,7 +73,7 @@ export default function Hero() {
 
           {/* Get Started Button */}
           <a 
-            href="#services" 
+            href="#contact" 
             className="mt-4 px-8 py-4 bg-gradient-to-r from-white to-gray-100 text-purple-700 font-semibold rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-2xl active:scale-95"
           >
             <RocketIcon size={20} className="group-hover:rotate-45 transition-transform duration-300" />

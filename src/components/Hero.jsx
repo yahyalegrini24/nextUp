@@ -63,10 +63,7 @@ export default function Hero() {
             <a href="#" className="hover:scale-110 transition-transform" aria-label={t('social.facebook')}>
               <FacebookIcon size={28} />
             </a>
-            <a href="#" className="hover:scale-110 transition-transform" aria-label={t('social.twitter')}>
-              <TwitterIcon size={28} />
-            </a>
-            <a href="#" className="hover:scale-110 transition-transform" aria-label={t('social.instagram')}>
+            <a href="https://www.instagram.com/nextup.dz/" className="hover:scale-110 transition-transform" aria-label={t('social.instagram')}>
               <InstagramIcon size={28} />
             </a>
             <a href="#" className="hover:scale-110 transition-transform" aria-label={t('social.linkedin')}>

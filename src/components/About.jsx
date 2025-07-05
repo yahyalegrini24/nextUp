@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 export default function About() {
   const { t } = useTranslation();
@@ -18,7 +19,13 @@ export default function About() {
     <section id="about" className="min-h-screen flex items-center justify-center bg-purple-900 px-6 py-20">
       
       {/* Container */}
-      <div className="bg-purple-800/50 border border-white/10 rounded-xl p-8 md:p-12 max-w-4xl w-full grid md:grid-cols-2 gap-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="bg-purple-800/50 border border-white/10 rounded-xl p-8 md:p-12 max-w-4xl w-full grid md:grid-cols-2 gap-8"
+      >
         
         {/* Left - Title & Description */}
         <div className="flex flex-col justify-center text-white gap-4">
@@ -34,20 +41,23 @@ export default function About() {
         {/* Right - Features */}
         <div className="flex flex-col gap-4">
           {features.map((feature, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="flex items-start gap-3 bg-purple-700/30 border border-white/10 p-4 rounded-lg"
+              whileHover={{ scale: 1.03 }}
+              className="flex items-center gap-3 bg-purple-700/30 border border-white/10 p-4 rounded-lg transition"
             >
-              <span className="text-xl">{feature.icon}</span>
+              <div className="flex items-center justify-center w-12 h-12 bg-purple-600/30 rounded-full text-2xl">
+                {feature.icon}
+              </div>
               <div>
                 <h3 className="text-lg font-semibold">{feature.title}</h3>
                 <p className="text-sm text-purple-100">{feature.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

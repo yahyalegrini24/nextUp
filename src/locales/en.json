@@ -19,6 +19,10 @@
     "phrase2": "Fueling Your Vision",
     "phrase3": "Innovating Together"
   },
+
+
+
+  
   "services": {
     "title": "Our",
     "highlight": "Services",
@@ -64,25 +68,32 @@
     "next": "Next service",
     "goTo": "Go to service "
   },
+
+
+
   
   "about": {
     "title": "Our Mission",
     "mission": "At NextUp, we empower bold thinkers to bring their ideas to life and shape the future together.",
     "cta": "Join Our Movement",
-    "features": {
-      "innovation": {
-        "title": "We turn bold ideas into reality",
-        "description": "Our proven process transforms concepts into market-ready solutions"
-      },
-      "community": {
-        "title": "Community-driven innovation",
-        "description": "We believe the best solutions come from collaborative thinking"
-      },
-      "future": {
-        "title": "Future-focused solutions",
-        "description": "We build with tomorrow's challenges in mind"
-      }
-    }
+   "features": {
+  "innovation": {
+    "title": "Bold ideas into reality",
+    "description": "We turn concepts into real-world solutions."
+  },
+  "community": {
+    "title": "Driven by community",
+    "description": "Collaboration fuels our best ideas."
+  },
+  "future": {
+    "title": "Building for tomorrow",
+    "description": "Our work solves future challenges today."
+  }
+}
+
+
+
+
   },
   "contact": {
     "title": "Let's Connect",

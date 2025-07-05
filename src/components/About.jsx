@@ -29,11 +29,11 @@ export default function About() {
         
         {/* Left - Title & Description */}
         <div className="flex flex-col justify-center text-white gap-4">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-3xl font-bold">
             {t('about.title')}
           </h2>
           <div className="w-16 h-1 bg-purple-400 rounded-full"></div>
-          <p className="text-base md:text-lg max-w-md">
+          <p className="text-base md:text-lg max-w-md text-purple-100">
             {t('about.mission')}
           </p>
         </div>
@@ -43,15 +43,15 @@ export default function About() {
           {features.map((feature, index) => (
             <motion.div 
               key={index}
-              whileHover={{ scale: 1.03 }}
-              className="flex items-center gap-3 bg-purple-700/30 border border-white/10 p-4 rounded-lg transition"
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-4 bg-purple-700/30 border border-white/10 p-4 rounded-lg transition backdrop-blur-sm"
             >
-              <div className="flex items-center justify-center w-12 h-12 bg-purple-600/30 rounded-full text-2xl">
+              <div className="flex items-center justify-center w-14 h-14 bg-purple-600/40 rounded-full text-3xl text-white">
                 {feature.icon}
               </div>
               <div>
-                <h3 className="text-lg font-semibold">{feature.title}</h3>
-                <p className="text-sm text-purple-100">{feature.description}</p>
+                <h3 className="text-lg font-bold text-white mb-1">{feature.title}</h3>
+                <p className="text-sm text-purple-200 leading-relaxed">{feature.description}</p>
               </div>
             </motion.div>
           ))}

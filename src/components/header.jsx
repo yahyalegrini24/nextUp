@@ -107,7 +107,7 @@ export default function Header() {
                 className="block text-black hover:text-purple-700 text-lg font-medium transition"
                 onClick={() => setMenuOpen(false)}
               >
-                {t('contact')}
+                {t('contactMenu')}
               </a>
             </div>
           )}
